@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, viewport-fit=cover'>
+    <title>Privacy Policy</title>
+    <style>
+        :root {
+            --bg-color: white;
+            --text-color: #333;
+            --link-color: #666;
+            --link-hover-color: #444;
+        }
+        .dark-mode {
+            --bg-color: #1e1e1e;
+            --text-color: #e0e0e0;
+            --link-color: #999;
+            --link-hover-color: #bbb;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-y: auto;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            touch-action: manipulation;
+        }
+        .app-wrapper {
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+        }
+        .content-container {
+            flex: 1;
+            padding-top: calc(2.5rem + env(safe-area-inset-top));
+            padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+            padding-left: calc(1rem + env(safe-area-inset-left));
+            padding-right: calc(1rem + env(safe-area-inset-right));
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+            line-height: 1.5;
+            max-width: 750px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        a {
+            color: var(--link-color);
+            text-decoration: underline;
+            -webkit-text-decoration-skip-ink: none;
+            text-decoration-skip-ink: none;
+            transition: color 0.2s ease;
+        }
+        a:hover {
+            color: var(--link-hover-color);
+        }
+        .back-link {
+            margin-top: 2rem;
+            display: block;
+            padding: 4px;
+        }
+    </style>
+</head>
+<body>
+<script>
+  // Prevent white flash by applying theme before first paint
+  try {
+    const savedTheme = localStorage.getItem('vibratoMasteryTheme');
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark-mode');
+    }
+  } catch (e) {
+    // localStorage not available, ignore
+  }
+</script>
+
+<div class="app-wrapper">
+    <div class="content-container">
+        <script>
+            // Apply saved theme on load
+            document.addEventListener('DOMContentLoaded', () => {
+                const savedTheme = localStorage.getItem('vibratoMasteryTheme');
+                if (savedTheme === 'dark') {
+                    document.body.classList.add('dark-mode');
+                }
+            });
+        </script>
+
+        <strong>Privacy Policy</strong>
+
+        <p><strong>Effective Date:</strong> 2025-10-15</p>
+        
+        <p>
+            The Vibrato Mastery app is provided as a free app. This SERVICE is intended for use as is and is fully compliant with Apple App Store privacy requirements.
+        </p>
+
+        <p><strong>Information Collection and Use</strong></p>
+        <p>
+            The Vibrato Mastery app <strong>does not collect, store, or transmit any personally identifiable information</strong>. The app uses your device's microphone to analyze your vibrato in real-time. This audio data is processed locally on your device for the sole purpose of providing immediate feedback and is <strong>never stored, saved, or transmitted from your device</strong>. We do not have access to your audio data.
+        </p>
+
+        <p><strong>Microphone Permission</strong></p>
+        <p>
+            The app requires microphone access to analyze vibrato. This permission can be revoked at any time through your device settings (Settings > Privacy & Security > Microphone > Vibrato Mastery). No audio data is retained after processing.
+        </p>
+
+        <p><strong>Log Data, Cookies, and Tracking</strong></p>
+        <p>
+            The app does not collect log data, use cookies, or employ any tracking technologies. We do not use third-party analytics, advertising networks, or data collection SDKs.
+        </p>
+
+        <p><strong>Third-Party Services</strong></p>
+        <p>
+            We do not employ any third-party companies or individuals to access your data. All processing occurs locally on your device using built-in algorithms. No data is shared with third parties.
+        </p>
+
+        <p><strong>Data Retention and Deletion</strong></p>
+        <p>
+            Since no data is collected, stored, or transmitted, there is no data retained on our servers or systems. All audio data is processed in real-time and immediately discarded. Uninstalling the app removes all local data from your device.
+        </p>
+
+        <p><strong>Your Rights</strong></p>
+        <p>
+            Under GDPR, CCPA, and other applicable laws, you have rights to access, delete, rectify, restrict processing, and data portability. Since we collect no data, these rights are inherently fulfilled. To exercise control, you may revoke microphone permissions or uninstall the app at any time.
+        </p>
+
+        <p><strong>Security</strong></p>
+        <p>
+            Audio processing uses secure, sandboxed APIs on your device. No data is transmitted or stored externally. The app does not access contacts, location, photos, or other personal data.
+        </p>
+
+        <p><strong>Children's Privacy</strong></p>
+        <p>
+            This Service does not address anyone under 13. We do not knowingly collect personally identifiable information from children under 13. Since no data is collected, COPPA compliance is inherent.
+        </p>
+
+        <p><strong>Changes to This Privacy Policy</strong></p>
+        <p>
+            We may update this policy periodically. Changes will be posted on this page and within the app. Continued use after changes constitutes acceptance.
+        </p>
+
+        <p><strong>Contact Us</strong></p>
+        <p>
+            For questions or privacy concerns, contact us at: <strong>vibratomastery@gmail.com</strong>
+        </p>
+
+        <a href="index.html" class="back-link">← Back to App</a>
+    </div>
+</div>
+</body>
+</html>
