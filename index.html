@@ -94,50 +94,61 @@
 
         <strong>Privacy Policy</strong>
 
-        <p><strong>Effective Date:</strong> 2025-10-15</p>
+        <p><strong>Effective Date:</strong> 2026-05-08</p>
         
         <p>
-            The Vibrato Mastery app is provided as a free app. This SERVICE is intended for use as is and is fully compliant with Apple App Store privacy requirements.
+            The Vibrato Mastery app is free to download and includes optional in-app purchases for digital PDF books. This policy explains how the app handles microphone access, purchases, local preferences, and saved PDF files.
         </p>
 
         <p><strong>Information Collection and Use</strong></p>
         <p>
             The Vibrato Mastery app <strong>does not collect, store, or transmit any personally identifiable information</strong>. The app uses your device's microphone to analyze your vibrato in real-time. This audio data is processed locally on your device for the sole purpose of providing immediate feedback and is <strong>never stored, saved, or transmitted from your device</strong>. We do not have access to your audio data.
         </p>
+        <p>
+            The app may store non-personal preferences locally on your device, such as your selected instrument, theme setting, shown notices, and purchased book unlock status.
+        </p>
 
         <p><strong>Microphone Permission</strong></p>
         <p>
-            The app requires microphone access to analyze vibrato. This permission can be revoked at any time through your device settings (Settings > Privacy & Security > Microphone > Vibrato Mastery). No audio data is retained after processing.
+            The app requires microphone access to analyze vibrato. This permission can be revoked at any time through your device settings. No audio data is retained after processing.
+        </p>
+        <p>
+            Where supported by the operating system, the app may request an unprocessed microphone signal to help disable built-in echo cancellation, noise suppression, and automatic gain control during real-time vibrato analysis. The app does not record audio, route calls, change ringtone settings, run background audio capture, or transmit microphone data.
         </p>
 
         <p><strong>Log Data, Cookies, and Tracking</strong></p>
         <p>
-            The app does not collect log data, use cookies, or employ any tracking technologies. We do not use third-party analytics, advertising networks, or data collection SDKs.
+            The app does not collect log data, use cookies, or employ any tracking technologies. We do not use third-party analytics or advertising networks.
         </p>
 
         <p><strong>Third-Party Services</strong></p>
         <p>
-            We do not employ any third-party companies or individuals to access your data. All processing occurs locally on your device using built-in algorithms. No data is shared with third parties.
+            We do not employ any third-party analytics, advertising, or tracking services. In-app purchases are processed by your device's app store, which may process purchase information according to its own terms and policies. We do not receive or store your payment card information. No microphone or audio data is shared with third parties.
+        </p>
+
+        <p><strong>In-App Purchases and PDF Books</strong></p>
+        <p>
+            Purchased PDF books are bundled in the app and unlocked after purchase. If you purchase a PDF book, you may save it to your device using the system file picker. The saved file is controlled by you and your device.
         </p>
 
         <p><strong>Data Retention and Deletion</strong></p>
         <p>
-            Since no data is collected, stored, or transmitted, there is no data retained on our servers or systems. All audio data is processed in real-time and immediately discarded. Uninstalling the app removes all local data from your device.
+            Since no personally identifiable information is collected, stored, or transmitted by us, there is no personal data retained on our servers or systems. All audio data is processed in real-time and immediately discarded. Uninstalling the app removes local app data from your device.
         </p>
 
         <p><strong>Your Rights</strong></p>
         <p>
-            Under GDPR, CCPA, and other applicable laws, you have rights to access, delete, rectify, restrict processing, and data portability. Since we collect no data, these rights are inherently fulfilled. To exercise control, you may revoke microphone permissions or uninstall the app at any time.
+            Under GDPR, CCPA, and other applicable laws, you may have rights to access, delete, rectify, restrict processing, and data portability. Because we do not operate user accounts or servers for this app, we cannot access user records from our systems. To exercise control over local app data, you may revoke microphone permissions, clear app data, or uninstall the app at any time.
         </p>
 
         <p><strong>Security</strong></p>
         <p>
-            Audio processing uses secure, sandboxed APIs on your device. No data is transmitted or stored externally. The app does not access contacts, location, photos, or other personal data.
+            The app does not use analytics, advertising trackers, cookies, or user accounts. Microphone audio is processed locally on your device and is not transmitted or stored externally. Purchase processing is handled by your device's app store, which may process the information needed to complete and manage your purchase according to its own terms and policies. The app does not access contacts, location, photos, or other personal data.
         </p>
 
         <p><strong>Children's Privacy</strong></p>
         <p>
-            This Service does not address anyone under 13. We do not knowingly collect personally identifiable information from children under 13. Since no data is collected, COPPA compliance is inherent.
+            This Service does not address anyone under 13. We do not knowingly collect personally identifiable information from children under 13.
         </p>
 
         <p><strong>Changes to This Privacy Policy</strong></p>
@@ -153,5 +164,39 @@
         <a href="index.html" class="back-link">← Back to App</a>
     </div>
 </div>
+
+<script>
+    function fixAndroidBottomPadding() {
+        const container = document.querySelector('.content-container');
+        if (!container) return;
+
+        // Create a temp div to measure the *actual* safe area
+        const tempDiv = document.createElement('div');
+        tempDiv.style.cssText = 'position:fixed;bottom:0;height:0;padding-bottom:env(safe-area-inset-bottom);';
+        document.body.appendChild(tempDiv);
+        let safeAreaInsetBottom = parseInt(window.getComputedStyle(tempDiv).paddingBottom) || 0;
+        document.body.removeChild(tempDiv);
+
+        // Check if we are on Android
+        const isAndroid = (window.Capacitor && window.Capacitor.getPlatform() === 'android') || /Android/.test(navigator.userAgent);
+
+        // Smart Fix Logic: If safe area is missing (<40) on Android, manually add it
+        if (isAndroid && safeAreaInsetBottom < 40) {
+            // Tablet detection
+            const isTablet = Math.min(window.innerWidth, window.innerHeight) >= 600;
+            const requiredBottom = isTablet ? 60 : 48; // 60 for Tablets, 48 for Phones
+            
+            // Add the safety padding to the existing 1rem
+            container.style.paddingBottom = `calc(1rem + ${requiredBottom}px)`;
+        } else {
+            // Let CSS env() handle it normally
+            container.style.paddingBottom = '';
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', fixAndroidBottomPadding);
+    window.addEventListener('resize', fixAndroidBottomPadding);
+    window.addEventListener('orientationchange', () => setTimeout(fixAndroidBottomPadding, 100));
+</script>
 </body>
 </html>
