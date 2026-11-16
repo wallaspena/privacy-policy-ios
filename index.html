@@ -69,24 +69,26 @@
 </head>
 <body>
 <script>
-  // Prevent white flash by applying theme before first paint
+  // Prevent white flash by applying theme before first paint: dark unless Light was picked
+  let savedAppearance = null;
   try {
-    const savedTheme = localStorage.getItem('vibratoMasteryTheme');
-    if (savedTheme === 'dark') {
-      document.body.classList.add('dark-mode');
-    }
+    savedAppearance = localStorage.getItem('vibratoMasteryAppearance');
   } catch (e) {
-    // localStorage not available, ignore
+    // localStorage not available, keep the dark default
+  }
+  if (savedAppearance !== 'light') {
+    document.body.classList.add('dark-mode');
   }
 </script>
 
 <div class="app-wrapper">
     <div class="content-container">
         <script>
-            // Apply saved theme on load
+            // Apply saved theme on load: dark unless Light was picked
             document.addEventListener('DOMContentLoaded', () => {
-                const savedTheme = localStorage.getItem('vibratoMasteryTheme');
-                if (savedTheme === 'dark') {
+                let savedAppearance = null;
+                try { savedAppearance = localStorage.getItem('vibratoMasteryAppearance'); } catch (e) {}
+                if (savedAppearance !== 'light') {
                     document.body.classList.add('dark-mode');
                 }
             });
@@ -94,26 +96,26 @@
 
         <strong>Privacy Policy</strong>
 
-        <p><strong>Effective Date:</strong> 2026-05-08</p>
+        <p><strong>Effective Date:</strong> 2026-11-14</p>
         
         <p>
-            The Vibrato Mastery app is free to download and includes optional in-app purchases for digital PDF books. This policy explains how the app handles microphone access, purchases, local preferences, and saved PDF files.
+            The Vibrato Mastery app is free to download and includes optional in-app purchases: digital PDF books and Vibrato Mastery Pro, which unlocks the Review, Pitch, and Studio modes. This policy explains how the app handles microphone access, purchases, local preferences, and saved PDF files.
         </p>
 
         <p><strong>Information Collection and Use</strong></p>
         <p>
-            The Vibrato Mastery app <strong>does not collect, store, or transmit any personally identifiable information</strong>. The app uses your device's microphone to analyze your vibrato in real-time. This audio data is processed locally on your device for the sole purpose of providing immediate feedback and is <strong>never stored, saved, or transmitted from your device</strong>. We do not have access to your audio data.
+            The Vibrato Mastery app <strong>does not collect, store, or transmit any personally identifiable information</strong>. The app uses your device's microphone to analyze your vibrato in real-time. Live and Pitch process microphone audio locally for immediate feedback. In Review mode, a take of up to 30 seconds is held temporarily in memory to identify and measure vibrato passages. <strong>No audio files are saved and no audio is uploaded or transmitted.</strong> The take and results are cleared when you record again, leave Review, or leave or lock the app. We do not have access to your audio.
         </p>
         <p>
-            The app may store non-personal preferences locally on your device, such as your selected instrument, theme setting, shown notices, and purchased book unlock status.
+            The app may store non-personal preferences locally on your device, such as your selected instrument, theme setting, shown notices, and the unlock status of purchased books and Vibrato Mastery Pro.
         </p>
 
         <p><strong>Microphone Permission</strong></p>
         <p>
-            The app requires microphone access to analyze vibrato. This permission can be revoked at any time through your device settings. No audio data is retained after processing.
+            The app requires microphone access to analyze vibrato. This permission can be revoked at any time through your device settings. Live and Pitch audio is discarded after processing. Review audio and results remain in temporary memory for analysis and playback only while you stay in Review. They are cleared when you record again, leave Review, or leave or lock the app.
         </p>
         <p>
-            Where supported by the operating system, the app may request an unprocessed microphone signal to help disable built-in echo cancellation, noise suppression, and automatic gain control during real-time vibrato analysis. The app does not record audio, route calls, change ringtone settings, run background audio capture, or transmit microphone data.
+            Where supported by the operating system, the app may request an unprocessed microphone signal to help disable built-in echo cancellation, noise suppression, and automatic gain control during real-time vibrato analysis. Review captures a temporary take in memory only. The app does not save audio recordings, route calls, change ringtone settings, run background audio capture, or transmit microphone data.
         </p>
 
         <p><strong>Log Data, Cookies, and Tracking</strong></p>
@@ -126,14 +128,14 @@
             We do not employ any third-party analytics, advertising, or tracking services. In-app purchases are processed by your device's app store, which may process purchase information according to its own terms and policies. We do not receive or store your payment card information. No microphone or audio data is shared with third parties.
         </p>
 
-        <p><strong>In-App Purchases and PDF Books</strong></p>
+        <p><strong>In-App Purchases, PDF Books, and Vibrato Mastery Pro</strong></p>
         <p>
-            Purchased PDF books are bundled in the app and unlocked after purchase. If you purchase a PDF book, you may save it to your device using the system file picker. The saved file is controlled by you and your device.
+            Purchased PDF books are bundled in the app and unlocked after purchase. If you purchase a PDF book, you may save it to your device using the system file picker. The saved file is controlled by you and your device. Vibrato Mastery Pro is a one-time purchase that unlocks Review, Pitch, and Studio; its unlock status is kept on your device and can be restored from your app store account.
         </p>
 
         <p><strong>Data Retention and Deletion</strong></p>
         <p>
-            Since no personally identifiable information is collected, stored, or transmitted by us, there is no personal data retained on our servers or systems. All audio data is processed in real-time and immediately discarded. Uninstalling the app removes local app data from your device.
+            Since no personally identifiable information is collected, stored, or transmitted by us, there is no personal data retained on our servers or systems. Live and Pitch audio is processed in real time and immediately discarded. Review audio exists only in temporary memory during capture, analysis and playback. Recording again, leaving Review, or leaving or locking the app cancels processing and clears the take and its results. Uninstalling the app removes local app data from your device.
         </p>
 
         <p><strong>Your Rights</strong></p>
